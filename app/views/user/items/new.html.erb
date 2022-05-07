@@ -1,0 +1,50 @@
+  <div class="mx-auto" style="width: 400px;">
+  <h2>新規投稿</h2>
+　
+　<%= form_with model: @new_item,  url: user_items_path, local: true do |f| %>
+  <div class="field">
+    <%= f.label :テーマ %><br />
+    <%= f.text_field :title, autofocus: true, autocomplete: "title" %>
+  </div>
+  
+  <div>
+   <%= attachment_image_tag @new_item, :image, :fil, 100,  100 %>
+   <labe for="inputImage">ファイルを選択</labe>
+   <%= f.attachment_field :image, placeholder: "選択されていません" %>
+  </div>  
+ 
+   <div class="field">
+    <%= f.label :店名 %><br />
+    <%= f.text_field :shop_name, autofocus: true, autocomplete: "shop_name" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :商品名 %><br />
+    <%= f.text_field :commodity, autofocus: true, autocomplete: "commodity" %>
+  </div>
+  
+   <div class="field">
+    <%= f.label :感想 %><br />
+    <%= f.text_area :body, autofocus: true, autocomplete: "body" %>
+  </div>
+  
+   <div class="field">
+    <%= f.label :場所 %><br />
+    <%= f.text_field :place, autofocus: true, autocomplete: "place" %>
+  </div>
+  
+   <div class="field">
+    <%= f.label :値段 %><br />
+    <%= f.number_field :price, autofocus: true, autocomplete: "price" %>円
+  </div>
+  
+   <div>
+     <%= f.label :ジャンル %><br />
+     <%= f.collection_select(:genre_id, Genre.all, :id, :name) %>
+  </div>
+  
+   <div class="actions">
+    <%= f.submit "新規投稿" %>
+  </div>
+  <% end %>
+  </div>

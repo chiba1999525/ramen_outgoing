@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RamenOutgoing</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <header>
+  
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
+     <a class="navbar-brand" href="#">RamenOutgoing</a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav4">
+          <ul class="navbar-nav">
+              
+              <% if user_signed_in? %>
+               <li class="nav-item">
+                  <a <a class="nav-link" href=" /user/customers/mypage">マイページ</a>
+               </li>
+               <li class="nav-item">
+                   <a <a class="nav-link" href="/user/items">投稿一覧</a>
+               </li>
+               <li class="nav-item">
+                  <a <a class="nav-link" href="/user/customers">投稿者一覧</a>
+               </li>
+               <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_user_session_path, metod: :delete %>
+               </li>
+              <% elsif admin_signed_in? %>
+              
+              <% else %>
+              <li class="nav-item active">
+                  <a class="nav-link" href="#">ABOUT<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/users/sign_up">新規登録</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href=" /users/sign_in">ログイン</a>
+              </li>
+              <% end %>
+         </ul>
+      </div>
+　　</nav>
+    
+  </header>
+  <body>
+    <%= yield %>
+  </body>
+  <footer>
+    
+  </footer>
+</html>
