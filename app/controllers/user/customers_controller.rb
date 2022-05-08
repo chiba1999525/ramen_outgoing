@@ -1,18 +1,9 @@
 class  User::CustomersController < ApplicationController
   
   def index
-    @user = current_user
+    @my_user = current_user
+    @users = User.all
   end
-  
-  def new 
-    @user = User.new
-  end
-  
-  def create
-    @user = User.new(user_params)
-    @user.save
-    redirect_to user_items_path
-  end 
   
   def mypage
     @user = current_user
@@ -20,7 +11,8 @@ class  User::CustomersController < ApplicationController
   
   
   def show
-    
+    @user = User.find(params[:id])
+    @items = @user.items
   end
 
   def edit

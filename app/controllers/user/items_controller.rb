@@ -7,28 +7,46 @@ class User::ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    if @item.user != current_user
+    　redirect_to user_items_path
+    end 
   end
   
   def create
     @item = Item.new(item_params)
     @item.user_id = current_user.id
     @item.save
-    redirect_to user_items_path
+    if  flash[:notice] = '新規投稿しました！'
+        redirect_to user_items_path
+    else
+        render :new
+    end
   end 
 
   def edit
+    @item = Item.find(params[:id])
+    if @item.user != current_user
+    　 redirect_to user_items_path
+    end 
   end
 
   def show
-    @user = User.find(params[:id])
     @item = Item.find(params[:id])
-  end
-
-  def edit
+    @user = @item.user
+    @comments = @item.comments
+     @comment =current_user.comments.new 
   end
 
   def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+       flash[:notice] = '投稿変更しました！'
+       redirect_to user_item_path(@item.id)
+    else
+       render :edit
+    end
   end
+    
 
   def destroy
   end

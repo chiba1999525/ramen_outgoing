@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
  
  
+ 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   devise_for :admins, controllers: {
@@ -24,8 +25,11 @@ Rails.application.routes.draw do
   
   
   namespace :user do
-    resources :items, only: [:index, :show, :edit, :update, :destroy, :new, :create]
-    resources :customers do
+    resources :items, only: [:index, :show, :edit, :update, :destroy, :new, :create] do
+        resource :comments, only: [:create, :destroy]
+        resource :favorites, only: [:create, :destroy]
+    end 
+    resources :customers, only: [:index, :show, :edit, :update, :destroy ] do
       collection do
         get 'mypage' => 'customers#mypage'
        end
