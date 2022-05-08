@@ -1,16 +1,17 @@
 class User::ItemsController < ApplicationController
+  
   def index
     @items = Item
   end
 
   def new
-    @new_item = Item.new
+    @item = Item.new
   end
   
-  def dreate
-    @new = Item.new
-    current.user_id = current_user.id
-    @new.save
+  def create
+    @item = Item.new(item_params)
+    @item.user_id = current_user.id
+    @item.save
     redirect_to user_items_path
   end 
 
@@ -28,4 +29,10 @@ class User::ItemsController < ApplicationController
 
   def destroy
   end
+  
+  private
+  def item_params
+    params.require(:item).permit(:title, :image_id, :body, :place, :genre_id, :shop_name, :commodity, :price, :user_id, :customer_id)
+  end
+
 end

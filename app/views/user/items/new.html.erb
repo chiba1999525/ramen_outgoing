@@ -40,11 +40,13 @@
   
    <div>
      <%= f.label :ジャンル %><br />
-     <%= f.collection_select(:genre_id, Genre.all, :id, :name) %>
+     <%= f.collection_select :genre_id, Genre.all, :id, :name, :include_blank => true  %>
   </div>
   
+   <p>
    <div class="actions">
-    <%= f.submit "新規投稿" %>
-  </div>
+     <%= f.submit "新規投稿" %>
+   </div>
+   </p>
   <% end %>
   </div>

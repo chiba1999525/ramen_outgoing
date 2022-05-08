@@ -1,2 +1,30 @@
-<h1>Admin::Genres#index</h1>
-<p>Find me in app/views/admin/genres/index.html.erb</p>
+<div class="mx-auto" style="width: 400px;">
+<p><h2>ジャンル一覧</h2></p>
+
+<p>
+ <div class="field">
+  <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
+  <%= f.label :ジャンル %>
+  <%= f.text_field :name, outofocus: true, autocomplete: "name" %>
+  <%= f.submit "追加" %>
+  <% end %>
+</div>
+</p>
+ 
+ <p> 
+<table>
+   <thead><th>ジャンル</th>
+          <th></th>
+          <th></th>
+ 　</thead>
+   <% @genres.each do |genre| %>
+   <tbody>
+       <td><%= genre.name %></td>
+        <td><%= link_to "編集する", edit_admin_genre_path(genre.id) %></td>
+        <td><%= link_to "削除する", admin_genre_path(genre.id), method: :delete %></td>
+    </tbody>
+    <% end %>  
+</table>
+</p>
+
+</div>
