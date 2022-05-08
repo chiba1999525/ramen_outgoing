@@ -1,2 +1,52 @@
-<h1>Items#show,</h1>
-<p>Find me in app/views/items/show,.html.erb</p>
+<main>
+<sidebar>
+    <div>
+      <table>
+       <tr>
+           <th>プロフィール画像</th>
+           <td><%= attachment_image_tag @user, :image, :fill, 100, 100 %></td>
+       </tr>
+       <tr>
+           <th>名前</th>
+           <td><%= @user.name %></td>
+       </tr>
+       <tr>
+           <th>自己紹介</th>
+           <td><%= @user.body %></td>
+       </tr>
+       <tr>
+           <th>私のイチオシのお店</th>
+           <td><%= @user.like %></td>
+       </tr>
+       <tr>
+           <th>メールアドレス</th>
+           <td><%= @user.email %></td>
+       </tr>
+   </table>
+  </div>
+</sidebar>
+
+<blog>
+    <blog-head>
+        <div class ="bottan">
+             <%= link_to "記事を書く", new_user_item_path %>
+        </div>
+        
+    </blog-head>
+    <blog-body>
+        <div class="itme-box">
+            <div class="itme">
+                <%= @item.title %>
+                <%= attachment_image_tag @item, :image, :fill, 100, 100 %>
+                <%= @item.shop_name %>
+                <%= @item.place %>
+                <%= @item.commodity %>
+                <%= @item.price %>
+                <%= @item.body %>
+            </div>
+        </div>
+    </blog-body>
+</blog>
+</main>
+
+

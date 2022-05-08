@@ -1,28 +1,47 @@
-<h1>Items#index,</h1>
-<p>Find me in app/views/items/index,.html.erb</p>
-
-<sidebar>
-    <div>
-        <%#= @customer.image %>
-        <%#= @user.name %>
-        <%#= @customer.like %>
-        <%#= @customer.body %>
-    </div>
-</sidebar>
 
 <main>
-    <main-head>
+<sidebar>
+    <div>
+      <table>
+       <tr>
+           <th>プロフィール画像</th>
+           <td><%= attachment_image_tag @user, :image, :fill, 100, 100 %></td>
+       </tr>
+       <tr>
+           <th>名前</th>
+           <td><%= @user.name %></td>
+       </tr>
+       <tr>
+           <th>自己紹介</th>
+           <td><%= @user.body %></td>
+       </tr>
+       <tr>
+           <th>私のイチオシのお店</th>
+           <td><%= @user.like %></td>
+       </tr>
+       <tr>
+           <th>メールアドレス</th>
+           <td><%= @user.email %></td>
+       </tr>
+   </table>
+  </div>
+</sidebar>
+
+<blog>
+    <blog-head>
         <div class ="bottan">
              <%= link_to "記事を書く", new_user_item_path %>
         </div>
         
-    </main-head>
-    <main-body>
+    </blog-head>
+    <blog-body>
         <div class="itme-box">
             <% @items.each do |item| %>
             <div class="itme">
                 <%= item.title %>
+                 <%= link_to user_item_path(item.id) do %>
                 <%= attachment_image_tag item, :image, :fill, 100, 100 %>
+                <% end %>
                 <%= item.shop_name %>
                 <%= item.place %>
                 <%= item.commodity %>
@@ -31,5 +50,6 @@
             </div>
             <% end %>
         </div>
-    </main-body>
+    </blog-body>
+</blog>
 </main>

@@ -2,6 +2,7 @@ class User::ItemsController < ApplicationController
   
   def index
     @items = Item.all
+    @user = current_user
   end
 
   def new
@@ -10,7 +11,6 @@ class User::ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
-    @item.customer_id = current_user.id
     @item.user_id = current_user.id
     @item.save
     redirect_to user_items_path
@@ -20,6 +20,8 @@ class User::ItemsController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def edit

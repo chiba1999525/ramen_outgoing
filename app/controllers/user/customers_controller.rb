@@ -2,36 +2,43 @@ class  User::CustomersController < ApplicationController
   
   def index
     @user = current_user
-    @customer = @user.customer
   end
   
   def new 
-    @customer = Customer.new
+    @user = User.new
   end
   
   def create
-    @customer = Customer.new(customer_params)
-    @customer.user_id = current_user.id
-    @customer.save
+    @user = User.new(user_params)
+    @user.save
     redirect_to user_items_path
+  end 
+  
+  def mypage
+    @user = current_user
   end 
   
   
   def show
+    
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to mypage_user_customers_path
   end
 
   def destroy
   end
   
   private
-  def customer_params
-    params.require(:customer).permit(:title, :image_id, :body, :user_id, :like)
+  def user_params
+    params.require(:user).permit(:title, :image, :body, :like, :name, :email)
   end
   
 end
