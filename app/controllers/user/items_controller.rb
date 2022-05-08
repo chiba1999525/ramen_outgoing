@@ -1,7 +1,7 @@
 class User::ItemsController < ApplicationController
   
   def index
-    @items = Item
+    @items = Item.all
   end
 
   def new
@@ -10,6 +10,7 @@ class User::ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
+    @item.customer_id = current_user.id
     @item.user_id = current_user.id
     @item.save
     redirect_to user_items_path
@@ -32,7 +33,7 @@ class User::ItemsController < ApplicationController
   
   private
   def item_params
-    params.require(:item).permit(:title, :image_id, :body, :place, :genre_id, :shop_name, :commodity, :price, :user_id, :customer_id)
+    params.require(:item).permit(:title, :image, :body, :place, :genre_id, :shop_name, :commodity, :price, :user_id, :customer_id)
   end
 
 end

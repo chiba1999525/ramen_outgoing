@@ -1,17 +1,18 @@
   <div class="mx-auto" style="width: 400px;">
   <h2>新規投稿</h2>
 　
-　<%= form_with model: @new_item,  url: user_items_path, local: true do |f| %>
+　<%= form_with model: @item,  url: user_items_path, local: true do |f| %>
   <div class="field">
     <%= f.label :テーマ %><br />
     <%= f.text_field :title, autofocus: true, autocomplete: "title" %>
   </div>
   
-  <div>
-   <%= attachment_image_tag @new_item, :image, :fil, 100,  100 %>
-   <labe for="inputImage">ファイルを選択</labe>
-   <%= f.attachment_field :image, placeholder: "選択されていません" %>
-  </div>  
+   <div>
+   <%= attachment_image_tag @item, :image, :fil, 100,  100 %>
+   <label for="inputImage">ファイルを選択</label>
+    <%= f.attachment_field :image, placeholder: "選択されていません" %>
+   </div>      
+  
  
    <div class="field">
     <%= f.label :店名 %><br />

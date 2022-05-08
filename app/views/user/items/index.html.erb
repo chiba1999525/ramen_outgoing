@@ -1,15 +1,35 @@
 <h1>Items#index,</h1>
 <p>Find me in app/views/items/index,.html.erb</p>
 
-<div class="container">
-    <div class="row">
-        <div class="clo-lg-4">
-            こんにちは
-        </div>
-        <div class="col-lg-8">
-            <table class="table table-syriped">
-                 <%= link_to "記事を書く", new_user_item_path %>
-            </table>
-        </div>
+<sidebar>
+    <div>
+        <%#= @customer.image %>
+        <%#= @user.name %>
+        <%#= @customer.like %>
+        <%#= @customer.body %>
     </div>
-</div>
+</sidebar>
+
+<main>
+    <main-head>
+        <div class ="bottan">
+             <%= link_to "記事を書く", new_user_item_path %>
+        </div>
+        
+    </main-head>
+    <main-body>
+        <div class="itme-box">
+            <% @items.each do |item| %>
+            <div class="itme">
+                <%= item.title %>
+                <%= attachment_image_tag item, :image, :fill, 100, 100 %>
+                <%= item.shop_name %>
+                <%= item.place %>
+                <%= item.commodity %>
+                <%= item.price %>
+                <%= item.body %>
+            </div>
+            <% end %>
+        </div>
+    </main-body>
+</main>

@@ -1,0 +1,30 @@
+<div class="mx-auto" style="width: 400px;">
+    <p><h2>プロフィールを追加しよう！</h2></p>
+    
+      
+  <%= form_with model: @customer,  url: user_customers_path, local: true do |f| %>  
+  <div>
+   <%= f.label :プロフィール画像 %>
+   <%= attachment_image_tag @customer, :image, :fil, 100,  100 %>
+   <labe for="inputImage"></labe>
+   <%= f.attachment_field :image, placeholder: "選択されていません" %>
+  </div>      
+    
+　<div class="field">
+    <%= f.label :自己紹介 %><br />
+    <%= f.text_area :body, autofocus: true, autocomplete: "body" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :私のイチオシのお店 %><br />
+    <%= f.text_field :like, autofocus: true, autocomplete: "like" %>
+  </div>
+  
+  <p>
+  <div class="action">
+    <%= f.submit "プロフィール追加" %>
+  </div>
+  </p>
+  <% end %>
+  
+  </div>

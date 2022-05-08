@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   
   namespace :user do
     resources :items, only: [:index, :show, :edit, :update, :destroy, :new, :create]
-    resources :customers, only: [:index, :show, :edit, :update, :destroy] do
+    resources :customers do
       collection do
         get 'mypage' => 'customers#mypage'
        end
