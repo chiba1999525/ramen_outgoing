@@ -25,9 +25,9 @@
 <blog>
     <blog-head>
         <div class ="bottan">
-             <%= link_to "記事を書く", new_user_item_path %>
+             
+             
         </div>
-        
     </blog-head>
     <blog-body>
         <div class="itme-box">
@@ -43,12 +43,12 @@
                 <%= link_to "投稿内容変更", edit_user_item_path(@item.id) %>
                 <% end %></p>
                 
-                 <p>コメント件数：<%= @item.comments.count %></p>
-                    <% @item.comments.each do |comment| %>
-                        <p><%= image_tag('sample-author1.jpg') %></p>
-                         <%= comment.user.name %>
-                         <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-                   <% end %>
+                 <p>コメント件数：<%#= @item.comments.count %></p>
+                    <%# @item.comments.each do |comment| %>
+                        <p><%#= image_tag('sample-author1.jpg') %></p>
+                         <%#= comment.user.name %>
+                         <%#= comment.created_at.strftime('%Y/%m/%d') %><%#= comment.comment %>
+                   <%# end %>
                 </div>
                 
                 <div>

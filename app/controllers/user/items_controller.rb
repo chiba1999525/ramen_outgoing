@@ -33,8 +33,8 @@ class User::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @user = @item.user
-    @comments = @item.comments
-     @comment =current_user.comments.new 
+    @commernts = @itme.comments
+    @current_comment =current_user.comments.new 
   end
 
   def update
