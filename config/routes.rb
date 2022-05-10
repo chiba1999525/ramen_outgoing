@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
   
   namespace :user do
+    resources :genres, only: [:show]
     resources :items, only: [:index, :show, :edit, :update, :destroy, :new, :create] do
         resource :comments, only: [:create, :destroy]
         resource :favorites, only: [:create, :destroy]

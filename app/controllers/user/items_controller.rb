@@ -3,6 +3,7 @@ class User::ItemsController < ApplicationController
   def index
     @items = Item.all
     @user = current_user
+    @genres = Genre.all
   end
 
   def new
@@ -33,8 +34,7 @@ class User::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @user = @item.user
-    @commernts = @itme.comments
-    @current_comment =current_user.comments.new 
+   
   end
 
   def update
