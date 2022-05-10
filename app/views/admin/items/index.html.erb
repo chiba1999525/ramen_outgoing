@@ -1,28 +1,34 @@
-<main>
-<sidebar>
-   
-</sidebar>
-
-<blog>
-    <blog-head>
-        
-    </blog-head>
-    <blog-body>
-        <div class="itme-box">
-            <% @items.each do |item| %>
-            <div class="itme">
-                <%= item.title %>
-                 <%= link_to user_item_path(item.id) do %>
-                <%= attachment_image_tag item, :image, :fill, 100, 100 %>
-                <% end %>
-                <%= item.shop_name %>
-                <%= item.place %>
-                <%= item.commodity %>
-                <%= item.price %>
-                <%= item.body %>
+<body>
+    <div class="main">
+        <div class="sidebar">
+         
+       </div class="sidebar">
+       <div class="blog">
+            <div class="blog-head">
+               <% @genres.each do |genre| %>
+                    <div><%= link_to admin_genre_path(genre) do %>
+                       <%= genre.name %>
+                       <% end %> 
+                      <% end %>
+                    </div>
             </div>
-            <% end %>
+            <div class="blog-body">
+                <div class="itme-box">
+                  <% @items.each do |item| %>
+                  <div class="itme">
+                     <%= item.title %>
+                     <%= link_to admin_item_path(item.id) do %>
+                     <%= attachment_image_tag item, :image, :fill, 100, 100 %>
+                     <% end %>
+                     <%= item.shop_name %>
+                     <%= item.place %>
+                     <%= item.commodity %>
+                     <%= item.price %>
+                     <%= item.body %>
+                   </div>
+                   <% end %>
+                </div>
+            </div>
         </div>
-    </blog-body>
-</blog>
-</main>
+    </div>
+</body>

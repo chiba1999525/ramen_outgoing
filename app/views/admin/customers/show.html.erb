@@ -1,2 +1,48 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<body>
+    <div class="main">
+       <div class="sidebar">
+            <div>
+                <table>
+                    <tr>
+                      <th>プロフィール画像</th>
+                      <td><%= attachment_image_tag @user, :image, :fill, 100, 100 %></td>
+                    </tr>
+                    <tr>
+                       <th>名前</th>
+                       <td><%= @user.name %></td>
+                    </tr>
+                    <tr>
+                       <th>自己紹介</th>
+                       <td><%= @user.body %></td>
+                    </tr>
+                    <tr>
+                      <th>私のイチオシのお店</th>
+                      <td><%= @user.like %></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="blog">
+            <div class="blog-head">
+                
+            </blog-head>
+            <blog-body>
+               <div class="itme-box">
+                   <% @items.each do |item|%>
+                   <div class="itme">
+                      <%= item.title %>
+                      <%= link_to admin_item_path(item.id) do %>
+                      <%= attachment_image_tag item, :image, :fill, 100, 100 %>
+                      <% end %>
+                      <%= item.shop_name %>
+                      <%= item.place %>
+                      <%= item.commodity %>
+                      <%= item.price %>
+                      <%= item.body %>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

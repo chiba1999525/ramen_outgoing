@@ -24,7 +24,7 @@
        <div class="blog">
             <div class="blog-head">
               <% @genres.each do |genre| %>
-              <div><%= link_to user_genre_path(genre) do %>
+              <div><%= link_to admin_genre_path(genre) do %>
               <%= genre.name %>
               <% end %> 
               <% end %>

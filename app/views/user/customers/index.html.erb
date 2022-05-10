@@ -46,7 +46,7 @@
                                <td><%= user.name %></td>
                                <td><%= user.body %></td>
                                <td><%= user.like %></td>
-                               <td><%= link_to "詳しく見る", user_customer_path(user.id) %></td>
+                               <td><%= link_to "詳しく見る", admin_customer_path(user.id) %></td>
                             </tbody>
                            <% end %>
                         </table>
@@ -55,8 +55,4 @@
             </div>
         </div>
     </div>
-
-
-
-
 </body>

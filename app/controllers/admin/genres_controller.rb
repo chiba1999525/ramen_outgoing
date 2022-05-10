@@ -4,6 +4,12 @@ class Admin::GenresController < ApplicationController
     @genres = Genre.all
     @genre = Genre.new
   end
+  
+  def show
+    @genre = Genre.find(params[:id])
+    @items = @genre.items
+    @user = current_user
+  end 
 
 
   def create
