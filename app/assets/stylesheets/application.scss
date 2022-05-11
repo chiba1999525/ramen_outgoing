@@ -24,9 +24,21 @@
 }  
 
 .main {
-    background-color : red;
+    width: 1300px;
+    display: flex;
 }
 
-.table {
-    background-color : green;
+.sidebar {
+    width: 500px;
+    border: red;
+}
+
+.blog {
+    width: 800px;
+    border: red;
+}
+
+.item {
+    back-ground-color: #f6f0cc;
+    color: pink;
 }

@@ -8,9 +8,7 @@ class User::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    if @item.user != current_user
-    　redirect_to user_items_path
-    end 
+   
   end
   
   def create

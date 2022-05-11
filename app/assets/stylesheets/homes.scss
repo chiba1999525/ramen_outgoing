@@ -3,5 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .main {
-    background-color: red;
+   height: 1000px;
+   width: 1000px;
+}
+
+.main-top {
+    height: 500px;
+}
+
+.top-image {
+    background-image: url(/ramen/istockphoto-1135293039-612x612.jpeg);
+}
+
+.main-bottom {
+    height: 500px;
 }
