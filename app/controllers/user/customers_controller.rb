@@ -13,6 +13,7 @@ class  User::CustomersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @items = @user.items
+  
   end
 
   def edit
@@ -23,6 +24,12 @@ class  User::CustomersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to mypage_user_customers_path
+  end
+  
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:item_id)
+    @favorite_items = Item.find(favorites)
   end
 
   def destroy

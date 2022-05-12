@@ -23,10 +23,13 @@ Rails.application.routes.draw do
   namespace :user do
     resources :genres, only: [:show]
     resources :items, only: [:index, :show, :edit, :update, :destroy, :new, :create] do
-        resource :comments, only: [:create, :destroy]
+        resources :comments, only: [:create, :destroy]
         resource :favorites, only: [:create, :destroy]
     end 
     resources :customers, only: [:index, :show, :edit, :update, :destroy ] do
+       member do
+         get :favorites
+       end
       collection do
         get 'mypage' => 'customers#mypage'
        end

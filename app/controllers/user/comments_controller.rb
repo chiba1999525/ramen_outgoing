@@ -1,24 +1,17 @@
-class Users::CommentsController < ApplicationController
+class User::CommentsController < ApplicationController
   
  
-  def update
-  　@item = Itemm.find(params[:item_id])
-    @comment = @item.comments.new(comment_params)
-    @comment.user_id = current_user.id
-    if @comment.save
-      redirect_to request.referer
-    else
-      @item_new = Item.new
-      @comments = @item.comments
-      redirect_to user_item_path(@item.id)
-    end
+  def create
+    item = Item.find(params[:item_id])
+    comment = current_user.comments.new(comment_params)
+    comment.item_id = item.id
+    comment.save
+    redirect_to user_item_path(item.id)
   end
 
   def destroy
-    @item = Item.find(params[:item_id])
-    @comment = Comment.find(params[:id])
-    @comment.destroy
-    redirect_to request.referer
+    Comment.find_by(id: params[:id]).destroy
+    redirect_to user_item_path(item.id)  
   end
   
   private

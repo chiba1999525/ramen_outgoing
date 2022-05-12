@@ -21,7 +21,7 @@
                 </tr>
             </table>
             
-            <p><%= link_to "お気に入り記事",  favorites_user_customer_path(@user) %></p>
+            <p><%=link_to"お気に入り記事",favorites_user_path(@user) %></p>
        </div>
        
        
@@ -43,7 +43,8 @@
             
             <div class="blog-body">
                 <div class="itme-box">
-                    <% @items.each do |item| %>
+                    いいね一覧
+                    <% @favorite_items.each do |item|%>
                     <div class="itme">
                         <table border="1">
                             <tr>

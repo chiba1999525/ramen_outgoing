@@ -8,7 +8,7 @@ class User::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-   
+    @comment = Comment.new
   end
   
   def create
@@ -32,7 +32,7 @@ class User::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @user = @item.user
-   
+    @comment = Comment.new
   end
 
   def update

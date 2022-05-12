@@ -1,4 +1,4 @@
-class Users::FavoritesController < ApplicationController
+class User::FavoritesController < ApplicationController
     
   def create
     item = Item.find(params[:item_id])
