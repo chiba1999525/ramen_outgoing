@@ -28,13 +28,18 @@ Rails.application.routes.draw do
     resources :rooms, only: [:create, :index, :show]
     resources :genres, only: [:show]
     resources :items, only: [:index, :show, :edit, :update, :destroy, :new, :create] do
+      collection do 
+        get "search" => "items#search"
+      end   
         resources :comments, only: [:create, :destroy]
         resource :favorites, only: [:create, :destroy]
+        
     end 
     resources :messages, only: [:create]
     resources :rooms, only: [:create, :index, :show]
     resources :customers, only: [:index, :show, :edit, :update, :destroy ] do
        member do
+         get :comments
          get :favorites
          get "room" => "customers#room"
        end

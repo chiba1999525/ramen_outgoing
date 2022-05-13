@@ -1,5 +1,7 @@
 class User::ItemsController < ApplicationController
   
+   before_action :authenticate_user!
+  
   def index
     @items_all = Item.all
     @user = current_user
@@ -22,10 +24,27 @@ class User::ItemsController < ApplicationController
         render :new
     end
   end
+
+
+  def search
+    @range = params[:range]
+    @user = current_user
+    @genres = Genre.all
+    if @range == "User"
+      @users = User.looks(params[:search], params[:word])
+    else
+      @items = Item.looks(params[:search], params[:word])
+    end
+  end
   
   def favorites
     favorites = Favorite.where(user_id: @user.id).pluck(:item_id)
     @favorite_posts = Item.find(favorites)
+  end
+  
+  def comments
+    comments = Comment.where(user_id: @user.id).pluck(:item_id)
+    @comment_posts = Item.find(comments)
   end
 
   def edit

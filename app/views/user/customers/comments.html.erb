@@ -20,41 +20,24 @@
                   <td><%= @user.like %></td>
                 </tr>
             </table>
-            
-            <p><%= link_to "お気に入りした投稿",  favorites_user_customer_path(@user) %></p>
-            
-            <p><%= link_to "コメントした投稿",  comments_user_customer_path(@user) %></p>
-       </div>
+        </div>
        
        
        <div class="blog">
             <div class="blog-head">
-            
-              <% @genres.each do |genre| %>
-              <div>
-                  <%= link_to user_genre_path(genre) do %>
-             　　     <%= genre.name %>
-             　 　<% end %> 
-              </div>
-  　　　　　　　　　<% end %>
-  　　　　    
-  　　　     　    <div class="search_form">
-                   <%= form_with url: search_user_items_path, local: true, method: :get do |f| %>
-                      <%= f.text_field :word %>
-                    　<%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backword_match"], ["部分一致","partial_match"]]) %>
-                      <%= f.submit "検索", class: "btn btn-primary" %>
-                    <% end %>
-                </div>
-                  　　　    
+                
+             
+  　　　　　　
               <div class ="bottan">
                   <%= link_to "記事を書く", new_user_item_path %>
               </div>
-              
             </div>
             
             <div class="blog-body">
                 <div class="itme-box">
-                    <% @items_all.each do |item| %>
+                    
+                    コメントした投稿一覧
+                    <% @comment_items.each do |item|%>
                     <div class="itme">
                         <table border="1">
                             <tr>
