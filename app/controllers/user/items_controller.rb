@@ -1,10 +1,11 @@
 class User::ItemsController < ApplicationController
   
   def index
-    @items = Item.all
+    @items_all = Item.all
     @user = current_user
     @genres = Genre.all
   end
+  
 
   def new
     @item = Item.new
@@ -20,7 +21,12 @@ class User::ItemsController < ApplicationController
     else
         render :new
     end
-  end 
+  end
+  
+  def favorites
+    favorites = Favorite.where(user_id: @user.id).pluck(:item_id)
+    @favorite_posts = Item.find(favorites)
+  end
 
   def edit
     @item = Item.find(params[:id])

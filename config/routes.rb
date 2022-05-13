@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -20,15 +21,22 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :show, :edit, :update, :destroy, :new, :create]
   end
   
+  
+  
   namespace :user do
+    resources :messages, only: [:create]
+    resources :rooms, only: [:create, :index, :show]
     resources :genres, only: [:show]
     resources :items, only: [:index, :show, :edit, :update, :destroy, :new, :create] do
         resources :comments, only: [:create, :destroy]
         resource :favorites, only: [:create, :destroy]
     end 
+    resources :messages, only: [:create]
+    resources :rooms, only: [:create, :index, :show]
     resources :customers, only: [:index, :show, :edit, :update, :destroy ] do
        member do
          get :favorites
+         get "room" => "customers#room"
        end
       collection do
         get 'mypage' => 'customers#mypage'

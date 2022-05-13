@@ -28,6 +28,10 @@
        <div class="blog">
             <div class="blog-head">
                 
+              <div>
+                 <%= link_to "いいねした投稿", favorites_user_customer_path(@user.id) %>
+              </div>
+                
               <% @genres.each do |genre| %>
               <div>
                   <%= link_to user_genre_path(genre) do %>
@@ -39,11 +43,12 @@
               <div class ="bottan">
                   <%= link_to "記事を書く", new_user_item_path %>
               </div>
+              
             </div>
             
             <div class="blog-body">
                 <div class="itme-box">
-                    <% @items.each do |item| %>
+                    <% @items_all.each do |item| %>
                     <div class="itme">
                         <table border="1">
                             <tr>

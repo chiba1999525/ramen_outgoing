@@ -20,21 +20,13 @@
                   <td><%= @user.like %></td>
                 </tr>
             </table>
-            
-            <p><%=link_to"お気に入り記事",favorites_user_path(@user) %></p>
-       </div>
+        </div>
        
        
        <div class="blog">
             <div class="blog-head">
                 
-              <% @genres.each do |genre| %>
-              <div>
-                  <%= link_to user_genre_path(genre) do %>
-             　　     <%= genre.name %>
-             　 　<% end %> 
-              </div>
-  　　　　　　　　　<% end %>
+             
   　　　　　　
               <div class ="bottan">
                   <%= link_to "記事を書く", new_user_item_path %>
@@ -43,6 +35,7 @@
             
             <div class="blog-body">
                 <div class="itme-box">
+                    
                     いいね一覧
                     <% @favorite_items.each do |item|%>
                     <div class="itme">
