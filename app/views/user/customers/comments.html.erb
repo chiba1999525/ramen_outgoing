@@ -50,20 +50,20 @@
                         <table border="1">
                             <tr>
                                 <div class="item-title">
-                                   <%= item.title %>
+                                   <h2><%= item.title %></h2>
                                 </div>
                             </tr>
                             <tr>
                                 <div class ="item-image">
                                    <%= link_to user_item_path(item.id) do %>
-                                      <%= attachment_image_tag item, :image, :fill, 100, 100 %>
+                                      <%= attachment_image_tag item, :image %>
                                    <% end %>
                                 </div>
                             </tr>
                             <tr>
                                <div calss="item-name">
                                    <%= item.shop_name %>
-                                   
+                                   <%= item.genre.name %>
                                    <%= item.place %>
                                    <%= item.commodity %>
                                    <%= item.price %>円

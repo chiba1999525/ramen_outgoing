@@ -22,9 +22,24 @@
 
 .item {
     back-ground-color: #f6f0cc;
+    text-align: center;
     color: pink;
+    width: 700px;
+    height: 400px;
+    padding: 50px;
 }
 
+tr {
+    text-align : center;
+}
+
+.table-title {
+    
+}
+
+.table-image {
+    background-size: auto;
+}
 
 .hr1 {
     border-right: 1px solid #000;
