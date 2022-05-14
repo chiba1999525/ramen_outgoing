@@ -2,10 +2,11 @@
     <div class="main">
        <div class="sidebar">
             <div>
+                <h3><%= @user.name %>さんプロフィール</h3>
                 <table border="1">
                     <tr>
                       <th>プロフィール画像</th>
-                      <td><%= attachment_image_tag @user, :image, :fill, 100, 100 %></td>
+                      <td><%= attachment_image_tag @user, :image, :fill, 120, 150 %></td>
                     </tr>
                     <tr>
                        <th>名前</th>
@@ -24,30 +25,53 @@
         </div>
         <div class="blog">
             <div class="blog-head">
-                
+                <h3><%= @user.name %>さんの投稿一覧(全<%= @items.count %>件)</h3>
             </blog-head>
+            
+            <hr class="hr2">
+            </hr>
+            
             <blog-body>
+                <div class="blog-body-head">
+                    
+                </div>
                <div class="itme-box">
                    <% @items.each do |item|%>
                    <div class="itme">
-                      <div class="image-title">
-                          <%= item.title %>
-                      </div> 
-                      <div class="item-image">
-                         <%= link_to user_item_path(item.id) do %>
-                         <%= attachment_image_tag item, :image, :fill, 100, 100 %>
-                         <% end %>
-                      </div>
-                      <div class="item-name">
-                         <%= item.shop_name %>
-                         <%= item.place %>
-                         <%= item.commodity %>
-                         <%= item.price %>円
-                      </div>
-                      <div class="itme-body">
-                         <%= item.body %>
-                      </div>
-                       
+                     　 <table border="1">
+                            <tr>
+                                <th colspan="2"><%= item.title %></th>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                   <%= link_to user_item_path(item.id) do %>
+                                      <%= attachment_image_tag item, :image, :fill, 100, 100 %>
+                                   <% end %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>地域</th>
+                                <td><%= item.genre.name %><%= item.place %></td>
+                            </tr>
+                             <tr>
+                                <th>お店名</th>
+                                <td><%= item.shop_name %></td>
+                            </tr>  
+                             <tr>
+                                <th>商品名</th>
+                                <td><%= item.commodity %></td>
+                            </tr>  
+                             <tr>
+                                <th>値段</th>
+                                <td><%= item.price %>円</td>
+                            </tr>  
+                            <tr>
+                                <td colspan="2"><%= item.body %></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">コメント件数：<%= item.comments.count %>件</td>
+                            </tr>
+                        </table>
                     </div>
                     <% end %>
                 </div>

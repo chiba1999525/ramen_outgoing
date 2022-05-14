@@ -2,10 +2,11 @@
     <div class="main">
         <div class="sidebar">
             <div>
+                <h3>投稿者プロフィール</h3>
                 <table border="1">
                    <tr>
                        <th>プロフィール画像</th>
-                       <td><%= attachment_image_tag @user, :image, :fill, 100, 100 %></td>
+                       <td><%= attachment_image_tag @user, :image, :fill, 120, 150 %></td>
                     </tr>
                     <tr>
                        <th>名前</th> 
@@ -20,36 +21,69 @@
                       <td><%= @user.like %></td>
                     </tr>
                 </table>
+                
+                 <p><%= link_to "お気に入りした投稿",  favorites_user_customer_path(@user) %></p>
+            
+                 <p><%= link_to "コメントした投稿",  comments_user_customer_path(@user) %></p>
+                
             </div>
         </div>
+        
+        
+        
+        
         <div calss="blog">
             <div class="blog-head">
                 <div class ="bottan">
+                    <h3>投稿詳細</h3>
                    <%= link_to "記事を書く", new_user_item_path %>
                 </div>
             </div>
+            
+            <hr class="hr2">
+            
+            
             <div class="blog-body">
                 <div class="itme-box">
                     <div class="itme">
-                       <div class="item-title">
-                          <%= @item.title %>
-                     　 </div>
-                        <div class ="item-image">
-                             <%= attachment_image_tag @item, :image, :fill, 100, 100 %>
-                        </div>
-                        <div calss="item-name">
-                           <%= @item.shop_name %>
-                           <%= @item.place %>
-                           <%= @item.commodity %>
-                           <%= @item.price %>
-                        </div>
-                        <div calss="item-body">
-                           <%= @item.body %>
-                        </div>
+                       <table border="1">
+                            <tr>
+                                <th colspan="2"><%= @item.title %></th>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                   <%= link_to user_item_path(@item.id) do %>
+                                      <%= attachment_image_tag @item, :image, :fill, 100, 100 %>
+                                   <% end %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>地域</th>
+                                <td><%= @item.genre.name %><%= @item.place %></td>
+                            </tr>
+                             <tr>
+                                <th>お店名</th>
+                                <td><%= @item.shop_name %></td>
+                            </tr>  
+                             <tr>
+                                <th>商品名</th>
+                                <td><%= @item.commodity %></td>
+                            </tr>  
+                             <tr>
+                                <th>値段</th>
+                                <td><%= @item.price %>円</td>
+                            </tr>  
+                            <tr>
+                                <td colspan="2"><%= @item.body %></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">コメント件数：<%= @item.comments.count %>件</td>
+                            </tr>
+                        </table>       
                        <p><% if @item.user == current_user %>
                        <%= link_to "投稿内容変更", edit_user_item_path(@item.id) %>
                        <% end %></p>
-                       <p>コメント件数：<%= @item.comments.count %></p>
+                       
                        <% @item.comments.each do |comment| %>
                        <p>
                        　<%= comment.user.name %>
@@ -60,7 +94,7 @@
                        </p>
                        <% if comment.user == current_user %>
                          <div>
-                            <%= link_to "削除", user_item_comment_path(comment.item,comment), method: :delete %>
+                            <%= link_to "コメント削除", user_item_comment_path(comment.item,comment), method: :delete %>
                          </div>
                        <% end %>
                     　 <% end %>

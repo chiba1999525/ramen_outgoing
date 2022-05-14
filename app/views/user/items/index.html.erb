@@ -4,8 +4,9 @@
         <div class="sidebar">
           <table border="1">
              <tr>
-                  <th>プロフィール画像</th>
-                  <td><%= attachment_image_tag @user, :image, :fill, 100, 100 %></td>
+                  <th>プロフィール<br />
+                   画像</th>
+                  <td><%= attachment_image_tag @user, :image, :fill, 120, 150 %></td>
              </tr>
              <tr>
                    <th>名前</th>
@@ -26,6 +27,8 @@
             <p><%= link_to "コメントした投稿",  comments_user_customer_path(@user) %></p>
        </div>
        
+       <hr class="hr1">
+       </hr>
        
        <div class="blog">
             <div class="blog-head">
@@ -52,38 +55,48 @@
               
             </div>
             
+            <hr class="hr2">
+            </hr>
+            
             <div class="blog-body">
+                <div class="blog-body-head">
+                    <p>全<%= @items_all.count %>件</p>
+                </div>
                 <div class="itme-box">
                     <% @items_all.each do |item| %>
                     <div class="itme">
                         <table border="1">
                             <tr>
-                                <div class="item-title">
-                                   <%= item.title %>
-                                </div>
+                                <th colspan="2"><%= item.title %></th>
                             </tr>
                             <tr>
-                                <div class ="item-image">
+                                <td colspan="2">
                                    <%= link_to user_item_path(item.id) do %>
                                       <%= attachment_image_tag item, :image, :fill, 100, 100 %>
                                    <% end %>
-                                </div>
+                                </td>
                             </tr>
                             <tr>
-                               <div calss="item-name">
-                                   <%= item.shop_name %>
-                                   <%= item.place %>
-                                   <%= item.commodity %>
-                                   <%= item.price %>円
-                               </div>
+                                <th>地域</th>
+                                <td><%= item.genre.name %><%= item.place %></td>
+                            </tr>
+                             <tr>
+                                <th>お店名</th>
+                                <td><%= item.shop_name %></td>
+                            </tr>  
+                             <tr>
+                                <th>商品名</th>
+                                <td><%= item.commodity %></td>
+                            </tr>  
+                             <tr>
+                                <th>値段</th>
+                                <td><%= item.price %>円</td>
+                            </tr>  
+                            <tr>
+                                <td colspan="2"><%= item.body %></td>
                             </tr>
                             <tr>
-                                <div calss="item-body">
-                                   <%= item.body %>
-                                </div>
-                                <div>
-                                     <p>コメント件数：<%= item.comments.count %></p>
-                                </div>
+                                <td colspan="2">コメント件数：<%= item.comments.count %>件</td>
                             </tr>
                         </table>       
                     </div>

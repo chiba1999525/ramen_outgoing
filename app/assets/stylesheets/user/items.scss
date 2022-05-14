@@ -2,3 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.main {
+    width: 1300px;
+    display: flex;
+}
+
+.sidebar {
+    width: 500px;
+    border: red;
+    padding: 50px;
+    text-align: center;
+}
+
+.blog {
+    width: 800px;
+    padding: 50px;
+}
+
+.item {
+    back-ground-color: #f6f0cc;
+    color: pink;
+}
+
+
+.hr1 {
+    border-right: 1px solid #000;
+}
+
+.hr2 {
+    border-top: 1px solid #000;
+}

@@ -13,11 +13,17 @@ Rails.application.routes.draw do
   }
   
   root to: 'homes#top'
+  get "about" => "homes#about"
   
   
   namespace :admin do
     resources :customers, only: [:index, :snow, :destroy]
-    resources :items, only: [:index, :show, :destroy]   
+    resources :items, only: [:index, :show, :destroy] do
+      collection do 
+        get "search" => "items#search"
+      end   
+        resources :comments, only: [:create, :destroy]
+    end 
     resources :genres, only: [:index, :show, :edit, :update, :destroy, :new, :create]
   end
   

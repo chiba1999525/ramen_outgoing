@@ -1,10 +1,10 @@
 <div class="mx-auto" style="width: 400px;">
-    <p><h2>ジャンル編集</h2></p>
+    <p><h2>地域編集</h2></p>
 
  <p>
   <div class="field">
   <%= form_with model: @genre, url: admin_genre_path, local: true do |f| %>
-  <%= f.label :ジャンル %>
+  <%= f.label :地域 %>
   <%= f.text_field :name, outofocus: true, autocomplete: "name" %>
   <%= f.submit "編集" %>
   <% end %>

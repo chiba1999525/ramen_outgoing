@@ -5,7 +5,7 @@
           <table border="1">
              <tr>
                   <th>プロフィール画像</th>
-                  <td><%= attachment_image_tag @user, :image, :fill, 100, 100 %></td>
+                  <td><%= attachment_image_tag @user, :image, :fill, 120, 150 %></td>
              </tr>
              <tr>
                    <th>名前</th>
@@ -20,8 +20,9 @@
                   <td><%= @user.like %></td>
                 </tr>
             </table>
+            
+             <p><%= link_to "お気に入りした投稿",  favorites_user_customer_path(@user) %></p>
         </div>
-       
        
        <div class="blog">
             <div class="blog-head">
@@ -34,6 +35,13 @@
             </div>
             
             <div class="blog-body">
+                <div class="blog-body-head">
+                    <p>全<%= @comment_items.count %>件</p>
+                </div>
+                
+                <hr class="hr2">
+            　　</hr>
+                
                 <div class="itme-box">
                     
                     コメントした投稿一覧
@@ -55,6 +63,7 @@
                             <tr>
                                <div calss="item-name">
                                    <%= item.shop_name %>
+                                   
                                    <%= item.place %>
                                    <%= item.commodity %>
                                    <%= item.price %>円

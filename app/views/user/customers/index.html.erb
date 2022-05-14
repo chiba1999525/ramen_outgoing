@@ -5,7 +5,7 @@
                <table border="1">
                    <tr>
                       <th>プロフィール画像</th>
-                      <td><%= attachment_image_tag @my_user, :image, :fill, 100, 100 %></td>
+                      <td><%= attachment_image_tag @my_user, :image, :fill, 120, 150 %></td>
                     </tr>
                     <tr>
                       <th>名前</th>
@@ -20,6 +20,11 @@
                       <td><%= @my_user.like %></td>
                     </tr>
                 </table>
+                
+                 <p><%= link_to "お気に入りした投稿",  favorites_user_customer_path(@my_user) %></p>
+            
+                 <p><%= link_to "コメントした投稿",  comments_user_customer_path(@my_user) %></p>
+                
             </div>
         </div>
 
@@ -29,6 +34,10 @@
                   <%= link_to "記事を書く", new_user_item_path %>
                 </div>
             </div>
+            
+            <hr class="hr2">
+            </hr>
+            
             <div class="blog-body">
                <div class="itme-box">
                     <div class="itme">
