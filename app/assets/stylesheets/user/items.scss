@@ -5,7 +5,11 @@
 
 .main {
     width: 1300px;
+    height: cover;
     display: flex;
+   
+
+    
 }
 
 .sidebar {
@@ -13,15 +17,17 @@
     border: red;
     padding: 50px;
     text-align: center;
+    background-color: white;
 }
 
 .blog {
     width: 800px;
     padding: 50px;
+    background-color: white;
 }
 
 .item {
-    back-ground-color: #f6f0cc;
+    background-color: white;
     text-align: center;
     color: pink;
     width: 700px;

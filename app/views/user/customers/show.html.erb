@@ -22,6 +22,11 @@
                     </tr>
                 </table>
             </div>
+            
+            <p><%= @user.name %>さんの<%= link_to "お気に入りした投稿",  favorites_user_customer_path(@user) %></p>
+            
+            <p><%= @user.name %>さんの<%= link_to "コメントした投稿",  comments_user_customer_path(@user) %></p>
+            
         </div>
         <div class="blog">
             <div class="blog-head">

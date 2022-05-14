@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   
   
   namespace :admin do
-    resources :customers, only: [:index, :snow, :destroy]
+    resources :customers, only: [:index, :show, :destroy]
     resources :items, only: [:index, :show, :destroy] do
       collection do 
         get "search" => "items#search"

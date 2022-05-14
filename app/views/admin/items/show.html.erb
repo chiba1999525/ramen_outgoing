@@ -31,13 +31,47 @@
             <div class="blog-body">
                 <div class="itme-box">
                     <div class="itme">
-                       <%= @item.title %>
-                       <%= attachment_image_tag @item, :image, :fill, 100, 100 %>
-                       <%= @item.shop_name %>
-                       <%= @item.place %>
-                       <%= @item.commodity %>
-                       <%= @item.price %>
-                       <%= @item.body %>
+                       <table border="1">
+                            <tr>
+                                <th colspan="2">
+                                    <div class="table-title">
+                                        <h2><%= @item.title %></h2>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="table-image">
+                                       <%= link_to user_item_path(@item.id) do %>
+                                          <%= attachment_image_tag @item, :image  %>
+                                       <% end %>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>地域</th>
+                                <td><%= @item.genre.name %><%= @item.place %></td>
+                            </tr>
+                             <tr>
+                                <th>お店名</th>
+                                <td><%= @item.shop_name %></td>
+                            </tr>  
+                             <tr>
+                                <th>商品名</th>
+                                <td><%= @item.commodity %></td>
+                            </tr>  
+                             <tr>
+                                <th>値段</th>
+                                <td><%= @item.price %>円</td>
+                            </tr>  
+                            <tr>
+                                <td colspan="2"><%= @item.body %></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">コメント件数：<%= @item.comments.count %>件</td>
+                            </tr>
+                        </table> 
+                        
                        <p><% if @item.user == current_user %>
                        <%= link_to "投稿内容変更", edit_user_item_path(@item.id) %>
                        <% end %></p>

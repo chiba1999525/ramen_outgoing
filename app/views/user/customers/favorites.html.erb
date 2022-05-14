@@ -21,7 +21,7 @@
                 </tr>
             </table>
             
-            <p><%= link_to "コメントした投稿",  comments_user_customer_path(@user) %></p>
+            <p><%= @user.name %>さん<%= link_to "コメントした投稿",  comments_user_customer_path(@user) %></p>
             
         </div>
        
@@ -39,47 +39,55 @@
             
             <div class="blog-body">
                 <div class="blog-body-head">
-                    <p>全<%= @favorite_items.count %>件</p>
+                    <p><h3><%= @user.name %>さんのいいね！一覧(全<%= @favorite_items.count %>件)</h3></p>
                 </div>
                 
                 <hr class="hr2">
             　　</hr>
                 
                 <div class="itme-box">
-                    いいね一覧
                     <% @favorite_items.each do |item|%>
                     <div class="itme">
                         <table border="1">
                             <tr>
-                                <div class="item-title">
-                                   <h2><%= item.title %></h2>
-                                </div>
+                                <th colspan="2">
+                                    <div class="table-title">
+                                        <h2><%= item.title %></h2>
+                                    </div>
+                                </th>
                             </tr>
                             <tr>
-                                <div class ="item-image">
-                                   <%= link_to user_item_path(item.id) do %>
-                                      <%= attachment_image_tag item, :image %>
-                                   <% end %>
-                                </div>
+                                <td colspan="2">
+                                   <div class="table-image">
+                                       <%= link_to user_item_path(item.id) do %>
+                                          <%= attachment_image_tag item, :image %>
+                                       <% end %>
+                                   </div>
+                                </td>
                             </tr>
                             <tr>
-                               <div calss="item-name">
-                                   <%= item.shop_name %>
-                                   <%= item.genre.name %>
-                                   <%= item.place %>
-                                   <%= item.commodity %>
-                                   <%= item.price %>円
-                               </div>
+                                <th>地域</th>
+                                <td><%= item.genre.name %><%= item.place %></td>
+                            </tr>
+                             <tr>
+                                <th>お店名</th>
+                                <td><%= item.shop_name %></td>
+                            </tr>  
+                             <tr>
+                                <th>商品名</th>
+                                <td><%= item.commodity %></td>
+                            </tr>  
+                             <tr>
+                                <th>値段</th>
+                                <td><%= item.price %>円</td>
+                            </tr>  
+                            <tr>
+                                <td colspan="2"><%= item.body %></td>
                             </tr>
                             <tr>
-                                <div calss="item-body">
-                                   <%= item.body %>
-                                </div>
-                                <div>
-                                     <p>コメント件数：<%= item.comments.count %></p>
-                                </div>
+                                <td colspan="2">コメント件数：<%= item.comments.count %>件</td>
                             </tr>
-                        </table>       
+                        </table>      
                     </div>
                     <% end %>
                 </div>
