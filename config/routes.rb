@@ -30,8 +30,6 @@ Rails.application.routes.draw do
   
   
   namespace :user do
-    resources :messages, only: [:create]
-    resources :rooms, only: [:create, :index, :show]
     resources :genres, only: [:show]
     resources :items, only: [:index, :show, :edit, :update, :destroy, :new, :create] do
       collection do 
@@ -39,18 +37,16 @@ Rails.application.routes.draw do
       end   
         resources :comments, only: [:create, :destroy]
         resource :favorites, only: [:create, :destroy]
-        
     end 
-    resources :messages, only: [:create]
-    resources :rooms, only: [:create, :index, :show]
     resources :customers, only: [:index, :show, :edit, :update, :destroy ] do
        member do
          get :comments
          get :favorites
-         get "room" => "customers#room"
        end
       collection do
+        get '/confirm' =>  'customers#confirm'
         get 'mypage' => 'customers#mypage'
+        patch '/withdraw_processing' =>  'customers#withdraw_processing'
        end
     end
   end

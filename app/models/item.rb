@@ -22,7 +22,7 @@ class Item < ApplicationRecord
     elsif search == "partial_match"
       @item = Item.where("title LIKE?","%#{word}%")
     else
-      @item = Item.all
+    
     end
   end
      

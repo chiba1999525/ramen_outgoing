@@ -3,63 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .main {
-   height: 1000px;
+   background-size: auto;
+   height: 500px;
    width: 1500px;
-   display: flex;
-}
-
-.main-top {
-    height: 500px;
-    width: 1500px;
-    display: flex;
-}
-
-.top-image1 {
-    background-image: url(assets/image/cooking-4124108__480.jpeg);
-    height: 500px;
-    width: 500px;
-    background-size: auto;
-}
-
-.top-image2 {
-    background-image: url(ramen/ramen-6783238__480.jpeg);
-    height: 500px;
-    width: 500px;
-    background-size: auto;
-}
-.top-image3 {
-    background-image: url(ramen/ramen-2199962__480.jpeg);
-    height: 500px;
-    width: 500px;
-    background-size: auto;
-}
-
-
-
-.main-bottom {
-    height: 500px;
-    width: 1500px;
-    display: flex;
-}
-
-.bottom-image1 {
-    background-image: url(ramen/ramen-2684000__480.jpeg);
-    height: 500px;
-    width: 500px;
-    background-size: auto;
-}
-.bottom-image2 {
-    background-image: url(ramen/ramen-4647408__340.jpeg);
-    height: 500px;
-    width: 500px;
-    background-size: auto;
-}
-.bottom-image3 {
-    background-image: url(ramen/ramen-6748517__480.jpeg);
-    height: 500px;
-    width: 500px;
-    background-size: auto;
-}
-
+   background-possition: center;
+   background-image: image-url("japanese_archipelago-1-p12.svg")}
 
 

@@ -57,13 +57,20 @@ class  User::CustomersController < ApplicationController
     comments = Comment.where(user_id: @user.id).pluck(:item_id)
     @comment_items = Item.find(comments)
   end
-
-  def destroy
+  
+  def withdraw_processing
+    user = current_user
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    user.update(is_delete: :false)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
   end
+
   
   private
   def user_params
-    params.require(:user).permit(:title, :image, :body, :like, :name, :email, :item_id)
+    params.require(:user).permit(:title, :image, :body, :like, :name, :email, :item_id, :is_delete)
   end
   
 end
