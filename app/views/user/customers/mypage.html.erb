@@ -1,33 +1,35 @@
-<div class="mx-auto" style="width: 800px;">
-    <p><h2>myプロフィール</h2></p>
+<div class="mx-auto" style="width: 400px;">
+    <p><h2>MYプロフィール</h2></p>
     
-   <table border="1">
-       <tr>
-           <th>プロフィール画像</th>
-           <td><%= attachment_image_tag @user, :image, :fill, 100, 100 %></td>
-       </tr>
-       <tr>
-           <th>名前</th>
-           <td><%= @user.name %></td>
-       </tr>
-       <tr>
-           <th>自己紹介</th>
-           <td><%= @user.body %></td>
-       </tr>
-       <tr>
-           <th>私のイチオシのお店</th>
-           <td><%= @user.like %></td>
-       </tr>
-       <tr>
-           <th>メールアドレス</th>
-           <td><%= @user.email %></td>
-       </tr>
-   </table>
-   
-   <p>
-    <div class="bottan">
-      <%= link_to "プロフィールを編集", edit_user_customer_path(@user.id) %>
-   </div>
-   </p>
+        <table border="1">
+            <tr>
+                <th>プロフィール画像</th>
+                 <td><%= attachment_image_tag @user, :image, :fill, 120, 150,format: 'jpeg', fallback: "no_image"  %></td>
+            </tr>
+            <tr>
+                <th>名前</th>
+                <td><%= @user.name %></td>
+             </tr>
+             <tr>
+                 <th>自己紹介</th>
+                 <td><%= @user.body %></td>
+             </tr>
+             <tr>
+                 <th>私のイチオシのお店</th>
+                 <td><%= @user.like %></td>
+            </tr>
+            <tr>
+                <th>メールアドレス</th>
+                <td><%= @user.email %></td>
+            </tr>
+        </table>
+    
+  
+  <p>
+  <div class="action">
+    <%= link_to "プロフィールを更新更新する", edit_user_customer_path(@user.id)  %>
+  </div>
+  </p>
+  
   
   </div>
