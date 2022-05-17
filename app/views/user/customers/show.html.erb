@@ -23,9 +23,9 @@
                 </table>
             </div>
             
-            <p><%= @user.name %>さんの<%= link_to "お気に入りした投稿",  favorites_user_customer_path(@user) %></p>
+            <p><%= @user.name %>さんの<%= link_to "お気に入りした投稿",  favorites_user_customer_path(@user), class: "btn btn-secondary" %></p>
             
-            <p><%= @user.name %>さんの<%= link_to "コメントした投稿",  comments_user_customer_path(@user) %></p>
+            <p><%= @user.name %>さんの<%= link_to "コメントした投稿",  comments_user_customer_path(@user), class: "btn btn-secondary" %></p>
             
         </div>
         <div class="blog">
@@ -50,7 +50,7 @@
                             <tr>
                                 <td colspan="2">
                                    <%= link_to user_item_path(item.id) do %>
-                                      <%= attachment_image_tag item, :image %>
+                                      <%= attachment_image_tag item, :image, :fill, 120, 150,format: 'jpeg', fallback: "no_image"   %>
                                    <% end %>
                                 </td>
                             </tr>

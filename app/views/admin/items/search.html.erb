@@ -1,23 +1,24 @@
 <body>
+    <body>
     
     <div class="main">
         <div class="sidebar">
           <table border="1">
              <tr>
                   <th>プロフィール画像</th>
-                  <td><%= attachment_image_tag @user, :image, :fill, 100, 100,format: 'jpeg', fallback: "no_image"  %></td>
+                  <td><%#= attachment_image_tag @user, :image, :fill, 100, 100,format: 'jpeg', fallback: "no_image"  %></td>
              </tr>
              <tr>
                    <th>名前</th>
-                   <td><%= @user.name %></td>
+                   <td><%#= @user.name %></td>
              </tr>
              <tr>
                   <th>自己紹介</th>
-                  <td><%= @user.body %></td>
+                  <td><%#= @user.body %></td>
               </tr>
               <tr>
                   <th>私のイチオシのお店</th>
-                  <td><%= @user.like %></td>
+                  <td><%#= @user.like %></td>
                 </tr>
             </table>
             
@@ -27,6 +28,9 @@
        <div class="blog">
             <div class="blog-head">
             
+             
+  　　　　   
+              
             </div>
             
             <div class="blog-body">
@@ -44,7 +48,7 @@
                             <tr>
                                 <td colspan="2">
                                    <div class="table-image">
-                                       <%= link_to user_item_path(item.id) do %>
+                                       <%= link_to admin_item_path(item.id) do %>
                                           <%= attachment_image_tag item, :image %>
                                        <% end %>
                                    </div>
@@ -79,4 +83,6 @@
             </div>
         </div>
     </div>
+</body>
+
 </body>

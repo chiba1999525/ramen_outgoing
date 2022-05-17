@@ -21,7 +21,7 @@
                 </tr>
             </table>
             
-            <p><%= @user.name %>さん<%= link_to "コメントした投稿",  comments_user_customer_path(@user) %></p>
+            <p><%= @user.name %>さん<%= link_to "コメントした投稿",  comments_user_customer_path(@user), class: "btn btn-secondary" %></p>
             
         </div>
        
@@ -33,7 +33,7 @@
              
   　　　　　　
               <div class ="bottan">
-                  <%= link_to "記事を書く", new_user_item_path %>
+                  <%= link_to "記事を書く", new_user_item_path, class: "btn btn-info" %>
               </div>
             </div>
             

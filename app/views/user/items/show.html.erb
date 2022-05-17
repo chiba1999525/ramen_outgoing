@@ -32,7 +32,7 @@
             <div class="blog-head">
                 <div class ="bottan">
                     <h3>投稿詳細</h3>
-                   <%= link_to "記事を書く", new_user_item_path,format: 'jpeg', fallback: "no_image.jpg" %>
+                   <%= link_to "記事を書く", new_user_item_path, class: "btn btn-info" %>
                 </div>
             </div>
             
@@ -83,33 +83,10 @@
                             </tr>
                         </table>       
                        <p><% if @item.user == current_user %>
-                       <%= link_to "投稿内容変更", edit_user_item_path(@item.id) %>
+                       <%= link_to "投稿内容変更", edit_user_item_path(@item.id), class: "btn btn-success" %>
                        <% end %></p>
                        
-                       <% @item.comments.each do |comment| %>
-                       <p>
-                       　<%= comment.user.name %>
-                      　 <%= comment.created_at.strftime('%Y/%m/%d') %>
-                      　 <div>
-                      　     <%= simple_format(comment.name) %>
-                      　 </div>
-                       </p>
-                       <% if comment.user == current_user %>
-                         <div>
-                            <%= link_to "コメント削除", user_item_comment_path(comment.item,comment), method: :delete %>
-                         </div>
-                       <% end %>
-                    　 <% end %>
-                    </div>
-                    <div>
-                       <%= form_with(model:[@item, @comment], url: user_item_comments_path(@item.id), local: true) do |f| %>
-                       <%= f.text_area :name, rows:'5',placeholder: "コメントをここに" %>
-                       <%= f.submit "送信する" %>
-                       <% end %>
-                    </div>
-                    
-                    <div>
-                        <% if @item.favorited_by?(current_user) %>
+                       <p> <% if @item.favorited_by?(current_user) %>
                           <p><%= link_to user_item_favorites_path(@item), method: :delete do %>
                             👍<%= @item.favorites.count %> いいね
                           <% end %></p>
@@ -117,8 +94,34 @@
                           <p><%= link_to user_item_favorites_path(@item), method: :post do %>
                           👍<%= @item.favorites.count %> いいね
                            <% end %></p>
-                        <% end %>    
+                        <% end %>   </p>
+                       
+                       
+                       <% @item.comments.each do |comment| %>
+                       <table border="1">
+                           <thead>
+                               <td><%= comment.user.name %><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+                           </thead>
+                           <tbody>
+                               <td>
+                                   <%= simple_format(comment.name) %>
+                                   <% if comment.user == current_user %>
+                                       <p> <%= link_to "コメント削除", user_item_comment_path(comment.item,comment), method: :delete, class: "btn btn-danger" %></p>
+                                    <% end %>
+                               </td>
+                           </tbody>
+                       </table>
+                       <% end %>
                     </div>
+                    
+                    
+                    <div>
+                       <%= form_with(model:[@item, @comment], url: user_item_comments_path(@item.id), local: true) do |f| %>
+                       <%= f.text_area :name, rows:'5',placeholder: "コメントをここに" %>
+                       <%= f.submit "送信する", class: "btn btn-info" %>
+                       <% end %>
+                    </div>
+            
                 </div>
             </div>
         </div>

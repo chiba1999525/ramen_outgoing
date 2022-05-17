@@ -29,6 +29,13 @@
     <%= f.text_area :body, autofocus: true, autocomplete: "body" %>
   </div>
   
+  
+   <div>
+     <%= f.label :地域 %><br />
+     <%= f.collection_select :genre_id, Genre.all, :id, :name, :include_blank => true  %>
+  </div>
+  
+  
    <div class="field">
     <%= f.label :場所 %><br />
     <%= f.text_field :place, autofocus: true, autocomplete: "place" %>
@@ -39,14 +46,9 @@
     <%= f.number_field :price, autofocus: true, autocomplete: "price" %>円
   </div>
   
-   <div>
-     <%= f.label :ジャンル %><br />
-     <%= f.collection_select :genre_id, Genre.all, :id, :name, :include_blank => true  %>
-  </div>
-  
    <p>
    <div class="actions">
-     <%= f.submit "投稿内容変更" %>
+     <%= f.submit "投稿内容変更", class: "btn btn-success"  %>
    </div>
    </p>
   <% end %>

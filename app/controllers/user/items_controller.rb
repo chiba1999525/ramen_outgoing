@@ -27,14 +27,8 @@ class User::ItemsController < ApplicationController
 
 
   def search
-    @range = params[:range]
-    @user = current_user
-    @genres = Genre.all
-    if @range == "User"
-      @users = User.looks(params[:search], params[:word])
-    else
-      @items = Item.looks(params[:search], params[:word])
-    end
+    @genre = Genre.find(params[:id])
+    @items = @genre.items
   end
   
   def favorites

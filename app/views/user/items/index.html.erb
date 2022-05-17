@@ -24,9 +24,9 @@
                 </table>
             </div>
             
-            <p>私の<%= link_to "お気に入りした投稿",  favorites_user_customer_path(@user) %></p>
+            <p><%= link_to "私のお気に入りした投稿",  favorites_user_customer_path(@user), class: "btn btn-secondary" %></p>
             
-            <p>私の<%= link_to "コメントした投稿",  comments_user_customer_path(@user) %></p>
+            <p><%= link_to "私のコメントした投稿",  comments_user_customer_path(@user), class: "btn btn-secondary" %></p>
        </div>
        
        <hr class="hr1">
@@ -38,12 +38,11 @@
               <p><h3>投稿一覧(全<%= @items_all.count %>件)</h3></p>
                   　　　    
               <div class ="bottan">
-                  <%= link_to "記事を書く", new_user_item_path %>
+                  <%= link_to "記事を書く", new_user_item_path, class: "btn btn-info" %>
               </div>
               
                   <div class="search_form">
-                   <%= form_with url: search_user_items_path, local: true, method: :get do |f| %>
-                      <%= f.text_field :word %>
+                   <%= form_with model: @genres, url: user_genre_path(@genres.ids), local: true, method: :get do |f| %>
                       <%= f.collection_select :genre_id, Genre.all, :id, :name, :include_blank => "地域を選択"  %>
                       <%= f.submit "検索", class: "btn btn-primary" %>
                     <% end %>

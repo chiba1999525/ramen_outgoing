@@ -21,9 +21,9 @@
                     </tr>
                 </table>
                 
-                 <p>私の<%= link_to "お気に入りした投稿",  favorites_user_customer_path(@my_user) %></p>
+                 <p><%= link_to "私のお気に入りした投稿",  favorites_user_customer_path(@my_user), class: "btn btn-secondary" %></p>
             
-                 <p>私の<%= link_to "コメントした投稿",  comments_user_customer_path(@my_user) %></p>
+                 <p><%= link_to "私のコメントした投稿",  comments_user_customer_path(@my_user), class: "btn btn-secondary" %></p>
                 
             </div>
         </div>
@@ -31,7 +31,7 @@
         <div class="blog">
             <div class="blog-head">
                 <div class ="bottan">
-                  <%= link_to "記事を書く", new_user_item_path %>
+                  <%= link_to "記事を書く", new_user_item_path,  class: "btn btn-info" %>
                 </div>
             </div>
             
@@ -55,7 +55,7 @@
                                <td><%= user.name %></td>
                                <td><%= user.body %></td>
                                <td><%= user.like %></td>
-                               <td><%= link_to "詳しく見る", user_customer_path(user.id) %></td>
+                               <td><%= link_to "詳しく見る", user_customer_path(user.id), class: "btn btn-warning" %></td>
                             </tbody>
                            <% end %>
                         </table>

@@ -11,6 +11,16 @@ class Admin::ItemsController < ApplicationController
     
   end
   
+  def search
+    @range = params[:range]
+    @genres = Genre.all
+    if @range == "User"
+      @users = User.looks(params[:search], params[:word])
+    else
+      @items = Item.looks(params[:search], params[:word])
+    end
+  end
+  
   def destroy 
     @item = Item.find(params[:id])
     @item.destroy

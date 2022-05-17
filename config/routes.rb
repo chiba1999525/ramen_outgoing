@@ -17,7 +17,12 @@ Rails.application.routes.draw do
   
   
   namespace :admin do
-    resources :customers, only: [:index, :show, :destroy]
+    resources :customers, only: [:index, :show, :destroy] do 
+       member do
+         get :comments
+         get :favorites
+       end
+    end 
     resources :items, only: [:index, :show, :destroy] do
       collection do 
         get "search" => "items#search"

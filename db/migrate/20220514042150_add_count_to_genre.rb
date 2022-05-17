@@ -1,5 +1,5 @@
 class AddCountToGenre < ActiveRecord::Migration[5.2]
   def change
-    add_column :genres, :count, :integer
+    add_column :genres, :count, :integer 
   end
 end

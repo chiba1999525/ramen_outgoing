@@ -24,43 +24,43 @@
               
               <% if user_signed_in? %>
                <li class="nav-item">
-                  <a class="nav-link" href=" /user/customers/mypage">マイページ</a>
+                  <%= link_to "マイページ", mypage_user_customers_path, class: "btn btn-outline-success" %>
                </li>
                <li class="nav-item">
-                   <a class="nav-link" href="/user/items">投稿一覧</a>
+                   <%= link_to "投稿一覧", user_items_path, class: "btn btn-outline-success" %>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="/user/customers">投稿者一覧</a>
+                  <%= link_to "投稿者一覧", user_customers_path, class: "btn btn-outline-success" %>
                </li>
                <li class="nav-item">
-                   <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+                   <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-outline-success" %>
                </li>
               <% elsif admin_signed_in? %>
               
                <li class="nav-item">
-                   <a class="nav-link" href="/admin/items">投稿一覧</a>
+                    <%= link_to "投稿一覧", admin_items_path, class: "btn btn-outline-success" %>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="/admin/customers">投稿者一覧</a>
+                     <%= link_to "投稿者一覧", admin_customers_path, class: "btn btn-outline-success" %>
                </li>
                <li class="nav-item">
-                   <a class="nav-link" href="/admin/genres">ジャンル一覧</a>
+                      <%= link_to "投稿者一覧", admin_genres_path, class: "btn btn-outline-success" %>
                </li>
                <li class="nav-item">
-                   <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+                   <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete,  class: "btn btn-outline-success" %>
                </li>
               <% else %>
               <li class="nav-item active">
-                  <a class="nav-link" href="/">HOME</a>
+                  <%= link_to "HOME", root_path, class: "btn btn-outline-success"  %>
               </li>
               <li class="nav-item active">
-                  <a class="nav-link" href="/about">ABOUT<span class="sr-only">(current)</span></a>
+                   <%= link_to "ABOUT", about_path, class: "btn btn-outline-success"  %>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="/users/sign_up">新規登録</a>
+                  <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-success"  %>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href=" /users/sign_in">ログイン</a>
+                  <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-success"  %>
               </li>
               <% end %>
          </ul>

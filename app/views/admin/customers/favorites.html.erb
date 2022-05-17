@@ -5,7 +5,7 @@
           <table border="1">
              <tr>
                   <th>プロフィール画像</th>
-                  <td><%= attachment_image_tag @user, :image, :fill, 100, 100,format: 'jpeg', fallback: "no_image"  %></td>
+                  <td><%= attachment_image_tag @user, :image, :fill, 120, 150,format: 'jpeg', fallback: "no_image"  %></td>
              </tr>
              <tr>
                    <th>名前</th>
@@ -21,17 +21,32 @@
                 </tr>
             </table>
             
-       </div>
+            <p><%= @user.name %>さん<%= link_to "コメントした投稿",  comments_user_customer_path(@user) %></p>
+            
+        </div>
        
+        
        
        <div class="blog">
             <div class="blog-head">
-            
+                
+             
+  　　　　　　
+              <div class ="bottan">
+                  <%= link_to "記事を書く", new_user_item_path %>
+              </div>
             </div>
             
             <div class="blog-body">
+                <div class="blog-body-head">
+                    <p><h3><%= @user.name %>さんのいいね！一覧(全<%= @favorite_items.count %>件)</h3></p>
+                </div>
+                
+                <hr class="hr2">
+            　　</hr>
+                
                 <div class="itme-box">
-                    <% @items.each do |item| %>
+                    <% @favorite_items.each do |item|%>
                     <div class="itme">
                         <table border="1">
                             <tr>
@@ -72,7 +87,7 @@
                             <tr>
                                 <td colspan="2">コメント件数：<%= item.comments.count %>件</td>
                             </tr>
-                        </table>       
+                        </table>      
                     </div>
                     <% end %>
                 </div>

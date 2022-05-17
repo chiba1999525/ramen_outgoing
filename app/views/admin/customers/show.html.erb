@@ -23,12 +23,12 @@
                 </table>
             </div>
             
-            <p><%= @user.name %>さんの<%= link_to "お気に入りした投稿",  favorites_user_customer_path(@user) %></p>
+            <p><%= @user.name %>さんの<%= link_to "お気に入りした投稿",  favorites_admin_customer_path(@user) %></p>
             
-            <p><%= @user.name %>さんの<%= link_to "コメントした投稿",  comments_user_customer_path(@user) %></p>
-            
+            <p><%= @user.name %>さんの<%= link_to "コメントした投稿",  comments_admin_customer_path(@user) %></p>
         </div>
-        </div>
+        
+        
         <div class="blog">
             <div class="blog-head">
                  <h3><%= @user.name %>さんの投稿一覧(全<%= @items.count %>件)</h3>
