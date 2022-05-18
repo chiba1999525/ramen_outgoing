@@ -45,7 +45,7 @@
                        <table border="1">
                             <tr>
                                 <th colspan="2">
-                                    <div class="table-title">
+                                    <div class="table-title"> <p class="post-date"><%= @item.created_at.strftime('%Y/%m/%d') %></p>
                                         <h2><%= @item.title %></h2>
                                     </div>
                                 </th>
@@ -87,7 +87,7 @@
                        <% end %></p>
                        
                        <p> <% if @item.favorited_by?(current_user) %>
-                          <p><%= link_to user_item_favorites_path(@item), method: :delete do %>
+                          <p><%= link_to user_item_favorites_path(@item),  method: :delete do %>
                             👍<%= @item.favorites.count %> いいね
                           <% end %></p>
                         <% else %>
