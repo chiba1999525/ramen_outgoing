@@ -1,5 +1,12 @@
   <div class="mx-auto" style="width: 400px;">
   <h2>投稿内容変更</h2>
+  
+    <% if @item.errors.any? %>
+      <%= @item.errors.count %>件のエラーが発生しました
+      <% @item.errors.full_messages.each do |message| %>
+         <%= message %>
+       <% end %>
+     <% end %>
 　
 　<%= form_with model: @item,  url: user_item_path, local: true do |f| %>
   <div class="field">
@@ -8,7 +15,7 @@
   </div>
   
    <div>
-   <%= attachment_image_tag @item, :image, :fil, 100,  100 %>
+   <%= attachment_image_tag @item, :image %>
    <label for="inputImage">ファイルを選択</label>
     <%= f.attachment_field :image, placeholder: "選択されていません" %>
    </div>      
@@ -52,4 +59,6 @@
    </div>
    </p>
   <% end %>
+  
+  <p><%= link_to "記事を削除", user_item_path(@item.id), method: :delete, class: "btn btn-danger"  %></p>
   </div>

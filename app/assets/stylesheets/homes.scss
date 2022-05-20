@@ -3,9 +3,93 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
- .main {
-     background-image: image-url("ramen-6748517__480.jpeg");
-     height: 600px;
-     width: 1000px;
- }
+ 
+ 
+
+h2 {
+    text-align: center;
+}
+
+.main {
+    width: 1300px;
+    height: cover;
+    display: flex;
+   
+
+    
+}
+
+.sidebar {
+    width: 500px;
+    border: red;
+    padding: 50px;
+    text-align: center;
+     border-light:  1px solid #000;
+}
+
+.bottan {
+    margin-right: 10px;
+    display-inline: block;
+}
+
+
+.container1 {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.item1 {
+   
+}
+
+
+.tabel {
+    width: 500px;
+}
+
+.blog-body {
+    width: 800px;
+    padding: 50px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.item {
+    text-align: center;
+    color: pink;
+    width: 700px;
+    height: 400px;
+    padding: 50px;
+}
+
+tr {
+    text-align : center;
+}
+
+.post-date {
+    font-size: 1rem;
+    border-top: 1px rgba(255,255,255,.5) solid;
+    padding-top: 6px;
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.table-image {
+    background-size: auto;
+}
+
+.hr1 {
+    border-right: 1px solid #000;
+}
+
+.hr2 {
+    border-top: 1px solid #000;
+}
+
 

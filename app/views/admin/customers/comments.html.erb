@@ -20,7 +20,7 @@
                 </tr>
             </table>
             
-             <p><%= @user.name %>さんの<%= link_to "お気に入りした投稿",  favorites_user_customer_path(@user) %></p>
+             <p><%= @user.name %>さんの<%= link_to "お気に入りした投稿",  favorites_admin_customer_path(@user),class: "btn btn-secondary" %></p>
         </div>
        
        <div class="blog">
@@ -28,9 +28,7 @@
                 
              
   　　　　　　
-              <div class ="bottan">
-                  <%= link_to "記事を書く", new_user_item_path %>
-              </div>
+              
             </div>
             
             <div class="blog-body">

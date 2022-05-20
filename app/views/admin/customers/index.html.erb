@@ -3,12 +3,23 @@
        <div class="sidebar">
             <div>
                
+             　 <table border="1">
+                    <tr>
+                      <th>プロフィール<br />
+                           画像</th>
+                        <td><%= attachment_image_tag @user, :image, :fill, 120, 150,format: 'jpeg', fallback: "no_image.jpg" %></td>
+                    </tr>
+                    <tr>
+                        <th>名前</th>
+                        <td>管理者様</td>
+                  
+                </table>
             </div>
         </div>
 
         <div class="blog">
             <div class="blog-head">
-                <h3>投稿者一覧</h3>
+                <h3>会員一覧</h3>
             </div>
             
             <hr class="hr2">
@@ -37,7 +48,7 @@
                                        退会
                                     <% end %>
                                </td>
-                               <td><%= link_to "詳しく見る", admin_customer_path(user.id) %></td>
+                               <td><%= link_to "詳しく見る", admin_customer_path(user.id),  class: "btn btn-warning" %></td>
                             </tbody>
                            <% end %>
                         </table>

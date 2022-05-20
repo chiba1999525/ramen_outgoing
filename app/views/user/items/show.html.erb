@@ -30,6 +30,14 @@
         
         <div calss="blog">
             <div class="blog-head">
+                
+                <% if @item.errors.any? %>
+                  <%= @item.errors.count %>件のエラーが発生しました
+                  <% @item.errors.full_messages.each do |message| %>
+                    <%= message %>
+                  <% end %>
+                <% end %>
+                
                 <div class ="bottan">
                     <h3>投稿詳細</h3>
                    <%= link_to "記事を書く", new_user_item_path, class: "btn btn-info" %>
@@ -116,10 +124,12 @@
                     
                     
                     <div>
-                       <%= form_with(model:[@item, @comment], url: user_item_comments_path(@item.id), local: true) do |f| %>
-                       <%= f.text_area :name, rows:'5',placeholder: "コメントをここに" %>
-                       <%= f.submit "送信する", class: "btn btn-info" %>
-                       <% end %>
+                      <p>
+                          <%= form_with(model:[@item, @comment], url: user_item_comments_path(@item.id), local: true) do |f| %>
+                            <%= f.text_area :name, rows:'5',placeholder: "コメントをここに" %>
+                            <%= f.submit "送信する", class: "btn btn-info" %>
+                          <% end %>
+                      </p>
                     </div>
             
                 </div>

@@ -1,4 +1,5 @@
 <body>
+    <div class="mx-auto" style="width: 400px;">
     <main>
         <h1>本当に退会しますか？</h1>
 
@@ -7,7 +8,8 @@
            退会する場合は「退会する」をクリックしてください。
         </p>
 
-        <p><%= link_to "退会しない", mypage_user_customers_path %></p>
-        <p> <%= link_to "退会する", withdraw_processing_user_customers_path, method: :patch %></p>
+        <p><%= link_to "退会しない", mypage_user_customer_path(@user.id), class: "btn btn-info"  %></p>
+        <p> <%= link_to "退会する", withdraw_processing_user_customer_path(@user.id), method: :patch, class: "btn btn-danger" %></p>
     </main>
+    </div>
 </body>

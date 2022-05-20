@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   
   root to: 'homes#top'
   get "about" => "homes#about"
-  
+  namespace :homes do
+    resources :items, only: [:index] 
+    resources :genres, only: [:show]
+  end
   
   namespace :admin do
     resources :customers, only: [:index, :show, :destroy] do 
@@ -37,21 +40,16 @@ Rails.application.routes.draw do
   namespace :user do
     resources :genres, only: [:show]
     resources :items, only: [:index, :show, :edit, :update, :destroy, :new, :create] do
-      collection do 
-        get "search" => "items#search"
-      end   
-        resources :comments, only: [:create, :destroy]
+        resources :comments, only: [ :create, :destroy]
         resource :favorites, only: [:create, :destroy]
     end 
     resources :customers, only: [:index, :show, :edit, :update, :destroy ] do
        member do
          get :comments
          get :favorites
-       end
-      collection do
-        get '/confirm' =>  'customers#confirm'
-        get 'mypage' => 'customers#mypage'
-        patch '/withdraw_processing' =>  'customers#withdraw_processing'
+         get '/confirm' =>  'customers#confirm'
+         get 'mypage' => 'customers#mypage'
+         patch '/withdraw_processing' =>  'customers#withdraw_processing'
        end
     end
   end

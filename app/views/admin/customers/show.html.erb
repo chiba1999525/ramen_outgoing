@@ -23,9 +23,10 @@
                 </table>
             </div>
             
-            <p><%= @user.name %>さんの<%= link_to "お気に入りした投稿",  favorites_admin_customer_path(@user) %></p>
             
-            <p><%= @user.name %>さんの<%= link_to "コメントした投稿",  comments_admin_customer_path(@user) %></p>
+            <p><%= @user.name %>さんの<%= link_to "お気に入りした投稿",  favorites_admin_customer_path(@user), class: "btn btn-secondary" %></p>
+            
+            <p><%= @user.name %>さんの<%= link_to "コメントした投稿",  comments_admin_customer_path(@user), class: "btn btn-secondary" %></p>
         </div>
         
         
@@ -38,7 +39,7 @@
             </hr>
             
             <blog-body>
-               <div class="itme-box">
+               <div class="container">
                    <% @items.each do |item|%>
                    <div class="itme">
                         <table border="1">

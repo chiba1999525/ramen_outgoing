@@ -34,20 +34,25 @@
        
        <div class="blog">
             <div class="blog-head">
+                
+               <div class="container1">
+                    <h4>地域別</h4>
+                     <% @genres.each do |genre| %>
+                         <%= link_to user_genre_path(genre.id), class: "btn btn-outline-primary"  do  %>
+                            <div class="item1">
+                                <%= genre.name %>
+                            </div>
+                           <% end %>
+                       <% end %>
+                   
+               </div>
   　　　　    
               <p><h3>投稿一覧(全<%= @items_all.count %>件)</h3></p>
                   　　　    
               <div class ="bottan">
                   <%= link_to "記事を書く", new_user_item_path, class: "btn btn-info" %>
               </div>
-              
-                  <div class="search_form">
-                   <%= form_with model: @genres, url: user_genre_path(@genres.ids), local: true, method: :get do |f| %>
-                      <%= f.collection_select :genre_id, Genre.all, :id, :name, :include_blank => "地域を選択"  %>
-                      <%= f.submit "検索", class: "btn btn-primary" %>
-                    <% end %>
-                </div>
-              
+            
             </div>
             
             <hr class="hr2">
@@ -105,6 +110,7 @@
                         </table>       
                     </div>
                     <% end %>
+                    <%= paginate @items_all %>
                 </div>
             </div>
         </div>

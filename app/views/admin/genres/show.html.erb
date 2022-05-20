@@ -2,16 +2,32 @@
     <div class="main">
         <div class="sidebar">
             <div>
-                <h3><%= @user.name %>さんの投稿一覧(全<%= @items.count %>件)</h3>
+               <table border="1">
+                    <tr>
+                      <th>プロフィール<br />
+                           画像</th>
+                        <td><%= attachment_image_tag @user, :image, :fill, 120, 150,format: 'jpeg', fallback: "no_image.jpg" %></td>
+                    </tr>
+                    <tr>
+                        <th>名前</th>
+                        <td>管理者様</td>
+                    </tr>
+                </table>
+            
+
            </div>
         </div>
 
         <div class="blog">
            <div class="blog-head">
-                <div>
-                   <%= @genre.name %>一覧
+                 <div>
+                  <h3> <%= @genre.name %>一覧(全<%= @items.count %>件)</h3>
                 </div>
             </div>
+            
+            <hr class="hr2">
+            </hr>
+            
             <div class="blog-body">
                <div class="itme-box">
                    <% @items.each do |item| %>

@@ -3,7 +3,7 @@ class User::ItemsController < ApplicationController
    before_action :authenticate_user!
   
   def index
-    @items_all = Item.all
+    @items_all = Item.page(params[:page]).per(4).reverse_order
     @user = current_user
     @genres = Genre.all
   end
@@ -17,8 +17,8 @@ class User::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user_id = current_user.id
-    @item.save
-    if  flash[:notice] = '新規投稿しました！'
+    if  @item.save
+        flash[:notice] = '新規投稿しました！'
         redirect_to user_items_path
     else
         render :new
@@ -60,12 +60,16 @@ class User::ItemsController < ApplicationController
        flash[:notice] = '投稿変更しました！'
        redirect_to user_item_path(@item.id)
     else
+       flash.now[:alert] = 'メッセージを入力してください。'
        render :edit
     end
   end
     
 
   def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to user_items_path
   end
   
   private

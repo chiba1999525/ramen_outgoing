@@ -1,31 +1,46 @@
 <body>
     <div class="main">
         <div class="sidebar">
+            
+             　　<table border="1">
+                    <tr>
+                      <th>プロフィール<br />
+                           画像</th>
+                        <td><%= attachment_image_tag @user, :image, :fill, 120, 150,format: 'jpeg', fallback: "no_image.jpg" %></td>
+                    </tr>
+                    <tr>
+                        <th>名前</th>
+                        <td>管理者様</td>
+                    </tr>
+                </table>
+            
+            
          
        </div class="sidebar">
        <div class="blog">
             <div class="blog-head">
                 
+                <div class="container1">
+                    <h4>地域別</h4>
+                     <% @genres.each do |genre| %>
+                         <%= link_to admin_genre_path(genre.id), class: "btn btn-outline-primary"  do  %>
+                            <div class="item1">
+                                <%= genre.name %>
+                            </div>
+                           <% end %>
+                       <% end %>
+                   
+               </div>
+                
                 <p><h3>投稿一覧(全<%= @items.count %>件)</h3></p>
-                  　　　    
-              <div class ="bottan">
-                  <%= link_to "記事を書く", new_user_item_path %>
-              </div>
-              
-                  <div class="search_form">
-                   <%= form_with url: search_admin_items_path, local: true, method: :get do |f| %>
-                      <%= f.text_field :word %>
-                      <%= f.collection_select :genre_id, Genre.all, :id, :name, :include_blank => "地域を選択"  %>
-                      <%= f.submit "検索", class: "btn btn-primary" %>
-                    <% end %>
-                </div>
+            
             </div>
             
               <hr class="hr2">
               </hr>
             
             <div class="blog-body">
-                <div class="itme-box">
+                <div class="container">
                   <% @items.each do |item| %>
                   <div class="itme">
                       <table border="1">

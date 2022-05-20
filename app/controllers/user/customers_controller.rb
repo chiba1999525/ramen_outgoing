@@ -6,27 +6,10 @@ class  User::CustomersController < ApplicationController
   end
   
   def mypage
-    @user = current_user
-  end
-  
-  def room
     @user = User.find(params[:id])
-    @current_entry = Entry.where(user_id: current_user.id)
-    @another_entry = Entry.where(user_id: @user.id)
-    unless @user.id == current_user.id
-      @current_entry.each do |current|
-        @another_entry.each do |another|
-          if current.room_id == another.room_id
-            @is_room = true
-            @room_id = current.room_id
-          end
-        end
-      end
-      unless @is_room
-        @room = Room.new
-        @entry = Entry.new
-      end
-    end
+    if @user != current_user
+       redirect_to mypage_user_customer_path(current_user.id)
+    end 
   end
   
   
@@ -37,12 +20,20 @@ class  User::CustomersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if @user != current_user
+       redirect_to edit_user_customer_path(current_user.id)
+    end 
   end
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to mypage_user_customers_path
+    if @user.update(user_params)
+       redirect_to mypage_user_customers_path(@user.id)
+       flash[:notice] = '更新しました！'
+    else
+       render :edit
+    end 
+       
   end
   
   def favorites
@@ -57,6 +48,13 @@ class  User::CustomersController < ApplicationController
     comments = Comment.where(user_id: @user.id).pluck(:item_id)
     @comment_items = Item.find(comments)
   end
+  
+  def confirm 
+    @user = User.find(params[:id])
+     if @user != current_user
+       redirect_to user_items_path(current_user.id)
+     end 
+  end 
   
   def withdraw_processing
     user = current_user

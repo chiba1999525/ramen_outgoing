@@ -17,13 +17,32 @@
     border: red;
     padding: 50px;
     text-align: center;
+     border-light:  1px solid #000;
 }
+
+.bottan {
+    margin-right: 10px;
+    display-inline: block;
+}
+
+
+.container1 {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.item1 {
+   
+}
+
 
 .tabel {
     width: 500px;
 }
 
-.blog {
+.blog-body {
     width: 800px;
     padding: 50px;
 }

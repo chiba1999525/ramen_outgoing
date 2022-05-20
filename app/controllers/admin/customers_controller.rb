@@ -21,4 +21,5 @@ class Admin::CustomersController < ApplicationController
     @comment_items = Item.find(comments)
   end
   
+  
 end

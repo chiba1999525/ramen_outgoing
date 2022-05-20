@@ -11,7 +11,11 @@ class Item < ApplicationRecord
      attachment :image
      
      
-     # 検索方法分岐
-     
-    
+      validates :title, presence: true
+      validates :body, presence: true
+      validates :place, presence: true
+      validates :genre, presence: true
+      validates :shop_name, presence: true
+      validates :commodity, presence: true
+      validates :price, presence: true
 end

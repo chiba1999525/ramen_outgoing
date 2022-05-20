@@ -74,22 +74,24 @@
                             </tr>
                         </table> 
                         
-                       <p><% if @item.user == current_user %>
-                       <%= link_to "投稿内容変更", edit_user_item_path(@item.id) %>
-                       <% end %></p>
+                       <p><%= link_to "投稿削除", admin_item_path(@item.id), method: :delete,  class: "btn btn-danger" %></p>
+                       
                        <p>コメント件数：<%= @item.comments.count %></p>
                        <% @item.comments.each do |comment| %>
-                       <p>
-                       　<%= comment.user.name %>
-                      　 <%= comment.created_at.strftime('%Y/%m/%d') %>
-                      　 <div>
-                      　     <%= simple_format(comment.name) %>
-                      　 </div>
-                       </p>
-                         <div>
-                            <%= link_to "削除", user_item_comment_path(comment.item,comment), method: :delete %>
-                         </div>
-                         <% end %>
+                        <table border="1">
+                           <thead>
+                               <td><%= comment.user.name %><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+                           </thead>
+                           <tbody>
+                               <td>
+                                   <%= simple_format(comment.name) %>
+                                 
+                                   <p> <%= link_to "コメント削除",  admin_item_comment_path(comment.item,comment), method: :delete, class: "btn btn-danger" %></p>
+                                    
+                               </td>
+                           </tbody>
+                       </table>
+                       <% end %>
                        
                     </div>
                     

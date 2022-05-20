@@ -44,12 +44,13 @@
                 </div>
                 
                <div class="container">
-                    <p class="post-date"><%= item.created_at.strftime('%Y/%m/%d') %></p>
                    <% @items.each do |item| %>
                    <div class="itme"> 
                         <table border="1">
                             <tr>
-                                <th colspan="2"><h2><%= item.title %></h2></th>
+                                <th colspan="2">
+                                     <p class="post-date"><%= item.created_at.strftime('%Y/%m/%d') %></p>
+                                <h2><%= item.title %></h2></th>
                             </tr>
                             <tr>
                                 <td colspan="2">

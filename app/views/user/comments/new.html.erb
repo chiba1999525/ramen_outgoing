@@ -1,0 +1,17 @@
+<body>
+    <div class="mx-auto" style="width: 400px;">
+    　　　<h1>コメントを投稿する</h1>
+    　　　
+    　　　 <% if @item.errors.any? %>
+                <%= @item.errors.count %>件のエラーが発生しました
+                <% @item.errors.full_messages.each do |message| %>
+                    <%= message %>
+                <% end %>
+            <% end %>
+    　　　
+    　　　 <%= form_with(model:[@item, @comment], url: user_item_comments_path(@item.id), local: true) do |f| %>
+                <%= f.text_area :name, rows:'5',placeholder: "コメントをここに" %>
+                <%= f.submit "送信する", class: "btn btn-info" %>
+            <% end %>
+    </div>
+</body>

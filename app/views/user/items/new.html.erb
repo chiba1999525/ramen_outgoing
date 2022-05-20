@@ -1,5 +1,12 @@
   <div class="mx-auto" style="width: 400px;">
   <h2>新規投稿</h2>
+  
+  <% if @item.errors.any? %>
+      <%= @item.errors.count %>件のエラーが発生しました
+      <% @item.errors.full_messages.each do |message| %>
+         <%= message %>
+      <% end %>
+  <% end %>
 　
 　<%= form_with model: @item,  url: user_items_path, local: true do |f| %>
   <div class="field">
