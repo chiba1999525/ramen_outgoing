@@ -1,7 +1,7 @@
 class User::CommentsController < ApplicationController
   
   
- 
+  before_action :authenticate_user!
   def create
     item = Item.find(params[:item_id])
     comment = current_user.comments.new(comment_params)
@@ -13,13 +13,13 @@ class User::CommentsController < ApplicationController
         @item = Item.find(params[:id])
         @user = @item.user
         @comment = Comment.new
-        render template: "user/items/show"
+        render show
     end 
   end
 
   def destroy
-    Comment.find_by(id: params[:id]).destroy
-    redirect_to user_item_path(item.id)  
+    Comment.find(params[:id]).destroy
+    redirect_to user_item_path(params[:item_id])
   end
   
   private

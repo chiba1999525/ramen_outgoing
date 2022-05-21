@@ -1,5 +1,5 @@
 class  User::CustomersController < ApplicationController
-  
+   before_action :authenticate_user!
   def index
     @my_user = current_user
     @users = User.all

@@ -35,6 +35,7 @@
                <li class="nav-item">
                    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-outline-success" %>
                </li>
+               
               <% elsif admin_signed_in? %>
               
                <li class="nav-item">
@@ -72,6 +73,7 @@
     
   </header>
   <body>
+    <%= alert %>
     <%= yield %>
   </body>
   <footer>
