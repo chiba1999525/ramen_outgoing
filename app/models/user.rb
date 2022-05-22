@@ -11,11 +11,11 @@ class User < ApplicationRecord
            has_many :entries, dependent: :destroy
            has_many :messages, dependent: :destroy
            
-         validates :title, presence: true
-         validates :body, presence: true
-         validates :image, presence: true
+         #validates :title, presence: true
+         #validates :body, presence: true
+         #validates :image, presence: true
          validates :name, presence: true
-         validates :like, presence: true
+         #validates :like, presence: true
            
             # is_deletedがfalseならtrueを返すようにしている
   def active_for_authentication?
