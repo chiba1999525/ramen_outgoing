@@ -62,7 +62,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   
   def after_sign_up_path_for(resource)
-     mypage_user_customers_path
+     mypage_user_customer_path(resource)
   end
   
 end
