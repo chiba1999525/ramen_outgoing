@@ -46,16 +46,6 @@ ActiveRecord::Schema.define(version: 2022_05_17_110231) do
     t.index ["reset_password_token"], name: "index_controllers_on_reset_password_token", unique: true
   end
 
-  create_table "customers", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.string "like"
-    t.string "image_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "entries", force: :cascade do |t|
     t.integer "user_id"
     t.integer "room_id"
@@ -122,6 +112,7 @@ ActiveRecord::Schema.define(version: 2022_05_17_110231) do
     t.text "body"
     t.string "like"
     t.string "image_id"
+    t.boolean "is_sctive"
     t.integer "item_id"
     t.boolean "is_delete", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
